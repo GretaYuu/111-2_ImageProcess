@@ -1,5 +1,5 @@
 """
-腐蝕
+侵蝕
 cv2.erode(src,                 # 輸入圖像
 	  kernel,                  # 卷積核
 	  dst=None, 
@@ -17,7 +17,7 @@ cv2.dilate(src,                    # 輸入圖像
            borderType=None, 
            borderValue=None)
 """
-
+#B11056251陳湘宇_習題1(a)
 import cv2
 import numpy as np
 
@@ -29,11 +29,8 @@ _, RedThresh = cv2.threshold(img, 160, 255, cv2.THRESH_BINARY)
 
 # OpenCV定義的結構矩形元素
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-eroded = cv2.erode(RedThresh, kernel)  # 腐蝕圖像
+eroded = cv2.erode(RedThresh, kernel)  # 侵蝕圖像
 
-#cv2.imwrite("original_img.jpg", res)  # 原圖像
-cv2.imwrite("R_channel_img.jpg", img)  # 紅色通道圖
-cv2.imwrite("RedThresh.jpg", RedThresh)  # 紅色閾值圖像
 cv2.imwrite("Eroded Image.jpg", eroded)  # 顯示腐蝕後的圖像
 
 # NumPy定義的結構元素
@@ -42,4 +39,3 @@ Nperoded = cv2.erode(RedThresh, NpKernel)  # 腐蝕圖像
 cv2.imwrite("Eroded by NumPy kernel.jpg", Nperoded)  # 顯示腐蝕後的圖像
 
 cv2.waitKey(0)
-cv2.destroyAllWindows()
